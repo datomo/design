@@ -24,7 +24,7 @@ let config = {
       path.resolve(__dirname, 'templates/post.pug')
     ],    
     'css/application': [
-      path.resolve(__dirname, 'assets/styles/application.scss')
+      path.resolve(__dirname, 'assets/css/application.scss')
     ]
   },
   output: {
