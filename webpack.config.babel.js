@@ -22,9 +22,9 @@ let config = {
     ],
     post: [
       path.resolve(__dirname, 'templates/post.pug')
-    ],    
+    ],
     'css/application': [
-      path.resolve(__dirname, 'assets/css/application.scss')
+      path.resolve(__dirname, 'assets/css/application.sass')
     ]
   },
   output: {
@@ -35,14 +35,14 @@ let config = {
     rules: [
       {
         test: /\.pug$/,
-        loader: extractHtml.extract({
-          loader: ['html-loader', 'pug-html-loader?pretty&exports=false']
+        use: extractHtml.extract({
+          use: ['html-loader', 'pug-html-loader?pretty&exports=false']
         })
       },
       {
-        test: /\.scss$/,
-        loader: extractStyles.extract({
-          loader: [
+        test: /\.(scss|sass)$/,
+        use: extractStyles.extract({
+          use: [
             {
               loader: 'css-loader'
             },
