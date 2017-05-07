@@ -5,6 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 let extractStyles = new ExtractTextPlugin('[name].css')
 let extractHtml = new ExtractTextPlugin('[name].html')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
   stats: {
@@ -25,6 +26,9 @@ let config = {
     ],
     'css/application': [
       path.resolve(__dirname, 'assets/css/application.sass')
+    ],
+    'js/application': [
+      path.resolve(__dirname, 'assets/js/application.js')
     ]
   },
   output: {
@@ -54,10 +58,19 @@ let config = {
             }
           ]
         })
-      }
+      },
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015'] },
+        }],
+      },
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: false,
       debug: true,
