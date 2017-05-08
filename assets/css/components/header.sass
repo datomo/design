@@ -1,11 +1,20 @@
 header
   .main-nav
+    position: relative
+    z-index: 1
+    width: 100%
+    transform: scaleY(0)
+    background-color: white
     ul
       list-style-type: none
       margin: 0
       padding: 0
-      width: 100%
       text-align: right
       li
         display: inline
         a
+
+  .is-fixed
+    position: fixed
+    transform: scaleY(1)
+    transform-origin: "top top"
