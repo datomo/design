@@ -6,6 +6,7 @@ import TwSplit from './vendor/utils/SplitText.min.js';
 
 $(document).ready(function(){
   console.log("test");
+  typewriter()
 
 
   ////////////////////////////////////////////////////////////
@@ -38,7 +39,11 @@ $(document).ready(function(){
   //end
   ////////////////////////////////////////////////////////////
 
-  scrollWatcher()
+  $(window).scroll(function() {
+    let windScroll = $(window)
+    adaptMenu(windScroll)
+    animationHero(windScroll)
+  })
 
 
 });
@@ -76,15 +81,9 @@ function switchClass(div1, div2, class1, class2){
   sel2.addClass(class1)
 }
 
-function scrollWatcher(){
-  $(window).scroll(function() {
-    adaptMenu()
 
-  })
-}
-
-function adaptMenu(){
-  let scroll = $(window).scrollTop() -  $(".hero-section").height()
+function adaptMenu(windScroll){
+  let scroll = windScroll.scrollTop() -  $(".hero-section").height()
   const menu = $('.main-nav')
   const isFixed = $('.is-fixed')
   const isStatic = $('.is-static')
@@ -113,5 +112,38 @@ function adaptMenu(){
     }
   }
 
-  console.log(scroll)
+}
+
+
+function rotate(name, rotation){
+  const titel = $(name)
+  Tw.to(titel, 2, {rotation: rotation})
+}
+
+
+function animationHero(windScroll) {
+    let scroll = windScroll.scrollTop()
+    console.log(scroll)
+    if (scroll == 0){
+      typewriter()
+    }
+
+}
+
+function typewriter(){
+  const revealInterval = 0.1,
+  mySplitText = new SplitText(".titel-hero", {type:"words,chars", charsClass:"char"}),
+  $chars = $(".char"),
+  tl =  new TimelineMax({});
+
+  tl.set($chars, {autoAlpha: 0})
+  // this makes the cursor resume blinking after reversing
+
+  //loop throug all the chars and make them visible AND set cursor to their right at same time
+
+  $chars.each(function(index, element){
+    var $element = $(element);
+
+    tl.set($element, {autoAlpha:1}, (index +1) * revealInterval)
+  })
 }
