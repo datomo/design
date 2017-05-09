@@ -44,6 +44,20 @@ $(document).ready(function(){
     adaptMenu(windScroll)
     animationHero(windScroll)
   })
+  ////////////////////////////////////////////////////////////
+  //Start Project Cover
+  ////////////////////////////////////////////////////////////
+
+  /*
+  const $panel = $(".panel-project")
+  $panel.on("mouseover", function(){
+    Tw.to($this.children(".panel-info"), 0.2,{autoAlpha: 1, zIndex: 1})
+  })
+
+  $panel.on("mouseleave", function(){
+    Tw.to($this.children(".panel-info"), 0.2,{autoAlpha: 0, zIndex: 0})
+  })
+  */
 
 
 });
@@ -83,7 +97,7 @@ function switchClass(div1, div2, class1, class2){
 
 
 function adaptMenu(windScroll){
-  let scroll = windScroll.scrollTop() -  $(".hero-section").height()
+  let scroll = windScroll.scrollTop() -  $(".section-hero").height()
   const menu = $('.main-nav')
   const isFixed = $('.is-fixed')
   const isStatic = $('.is-static')

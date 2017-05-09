@@ -1,0 +1,15 @@
+mixin panel(id)
+  .panel-project(id!=attributes.id)
+    .cover-project
+    
+    .info-project  
+      p this is some text
+
+.section-projects.section
+  .panel-holder
+    +panel(id="panel1") 
+    +panel(id="panel2")
+    +panel(id="panel3")
+  
+  h1.huge-titel Projects
+    
