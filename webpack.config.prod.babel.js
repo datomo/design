@@ -22,9 +22,12 @@ let config = {
     ],
     post: [
       path.resolve(__dirname, 'templates/post.pug')
-    ],    
+    ],
     'css/application': [
-      path.resolve(__dirname, 'assets/css/application.scss')
+      path.resolve(__dirname, 'assets/css/application.sass')
+    ],
+    'js/application': [
+      path.resolve(__dirname, 'assets/js/application.js')
     ]
   },
   output: {
@@ -40,7 +43,7 @@ let config = {
         })
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|sass)$/,
         loader: extractStyles.extract({
           loader: [
             {
@@ -48,7 +51,7 @@ let config = {
             },
             {
               loader: 'csso-loader?-restructure'
-            },            
+            },
             {
               loader: 'postcss-loader'
             },
@@ -57,7 +60,15 @@ let config = {
             }
           ]
         })
-      }
+      },
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015'] },
+        }],
+      },
     ]
   },
   plugins: [
@@ -78,7 +89,11 @@ let config = {
       }
     }),
     extractStyles,
-    extractHtml
+    extractHtml,
+    new webpack.optimize.UglifyJsPlugin({
+        include: /\.js$/,
+        minimize: true
+    }),
   ]
 }
 

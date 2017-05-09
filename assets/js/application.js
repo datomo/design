@@ -48,13 +48,15 @@ function translateText (data ){
   $.each(data, function(key, val) {
     let temp = $("." + key)
     temp.text(val)
-    let mySplitText = new SplitText(temp,{type:"lines, chars"}),
-    lines = mySplitText.lines;
-
+    let mySplitText = new SplitText(temp, {type:"lines"})
+    let lines = mySplitText.lines;
 
     let tl = new TimelineLite
     tl.set(lines, {transformOrigin: "left center", autoAlpha:0})
-    tl.staggerTo(lines, 0.3, {autoAlpha:1}, 0.03, "start")
+
+    tl.staggerTo(lines, 0.3, {autoAlpha:1}, 0.03, "+0")
+
+
   })
 }
 
@@ -90,7 +92,11 @@ function adaptMenu(){
   if (scroll < (0 - menu.height())) {
 
     if(menu.hasClass("is-fixed")) {
-      menu.removeClass("is-fixed")
+      //menu.removeClass("is-fixed")
+      let tl = new TimelineLite
+      tl.to(menu, 0.3,{top:-100})
+      tl.set(menu,{className:"-=is-fixed"})
+      tl.set(menu,{top:0})
     }else {
 
     }
@@ -99,8 +105,11 @@ function adaptMenu(){
     if(menu.hasClass("is-fixed")) {
 
     }else{
-      menu.addClass('is-fixed')
-
+      //menu.addClass('is-fixed')
+      let tl = new TimelineLite
+      tl.set($("header"),{height: menu.height()})
+      tl.set(menu,{className:"+=is-fixed"})
+      tl.fromTo(menu, 0.3,{top:-100},{top:0})
     }
   }
 
