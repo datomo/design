@@ -8,6 +8,8 @@ require('script-loader!./vendor/plugins/ScrollToPlugin.min.js');
 $(document).ready(function(){
   console.log("test");
   typewriter()
+  placeHire()
+  animateHire()
 
 
   ////////////////////////////////////////////////////////////
@@ -45,6 +47,12 @@ $(document).ready(function(){
     adaptMenu(windScroll)
     animationHero(windScroll)
   })
+
+
+  $(window).resize(function() {
+    placeHire()
+  })
+
   ////////////////////////////////////////////////////////////
   //Start Scroll Animation
   ////////////////////////////////////////////////////////////
@@ -179,4 +187,23 @@ function typewriter(){
 
     tl.set($element, {autoAlpha:1}, (index +1) * revealInterval)
   })
+}
+
+
+function placeHire() {
+  const $hire = $('#hire');
+  const $panel = $('.panel-social');
+  let leftPanel = (($panel.offset().left + $panel.width()) - ($hire.width()/2) - 20)
+  let topPanel = ($panel.offset().top - ($hire.height()/2) - 20)
+  TweenMax.set($hire,{x: leftPanel, y: topPanel});
+  TweenMax.set($hire,{rotation:-45})
+}
+
+function animateHire(){
+  const $hire = $('#hire');
+  const $panel = $('.panel-social');
+
+  TweenMax.set($hire, {force3D: false })
+  TweenMax.from($hire, 0.3, {autoAlpha: 0, scale: 3, z: 20, ease: Back.easeOut.config(1.7)})
+
 }
