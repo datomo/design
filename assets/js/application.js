@@ -193,8 +193,8 @@ function typewriter(){
 function placeHire() {
   const $hire = $('#hire');
   const $panel = $('.panel-social');
-  let leftPanel = (($panel.offset().left + $panel.width()) - ($hire.width()/2) - 20)
-  let topPanel = ($panel.offset().top - ($hire.height()/2) - 20)
+  let leftPanel = (($panel.position().left + $panel.width()) - ($(window).width()/10))
+  let topPanel = ($panel.position().top - ($hire.height()/2) - ($(window).height()/10))
   TweenMax.set($hire,{x: leftPanel, y: topPanel});
   TweenMax.set($hire,{rotation:-45})
 }
