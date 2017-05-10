@@ -56,10 +56,6 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////
   //Start Scroll Animation
   ////////////////////////////////////////////////////////////
-  /*
-  $('.menu-link').on("click", function(){
-    Tw.to(window, 0.3,{scrollTo: 400})
-  })*/
 
   var wrapper = $(".content"),
     $menu = $(".menu"),
@@ -164,9 +160,17 @@ function rotate(name, rotation){
 
 function animationHero(windScroll) {
     let scroll = windScroll.scrollTop()
+    const $secSocial = $('#section-social')
+    const secSocial = ($(".main-nav").height() + $("#section-hero").height() + $("#section-projects").height() )
     console.log(scroll)
+    console.log(secSocial + " hire")
     if (scroll == 0){
       typewriter()
+    }else if (scroll >= (secSocial)) {
+      animateHire()
+      console.log("hire")
+    }else if (scroll < secSocial) {
+      removeHire()
     }
 
 }
@@ -193,8 +197,8 @@ function typewriter(){
 function placeHire() {
   const $hire = $('#hire');
   const $panel = $('.panel-social');
-  let leftPanel = (($panel.position().left + $panel.width()) - ($(window).width()/10))
-  let topPanel = ($panel.position().top - ($hire.height()/2) - ($(window).height()/10))
+  let leftPanel = (($panel.position().left + $panel.width()) - ($(window).width()/20))
+  let topPanel = ($panel.position().top - ($hire.height()/2) - ($(window).height()/20))
   TweenMax.set($hire,{x: leftPanel, y: topPanel});
   TweenMax.set($hire,{rotation:-45})
 }
@@ -202,8 +206,24 @@ function placeHire() {
 function animateHire(){
   const $hire = $('#hire');
   const $panel = $('.panel-social');
+  if ($hire.hasClass("animated")){
 
-  TweenMax.set($hire, {force3D: false })
-  TweenMax.from($hire, 0.3, {autoAlpha: 0, scale: 3, z: 20, ease: Back.easeOut.config(1.7)})
+  } else {
+    $hire.addClass("animated")
+    TweenMax.set($hire, {force3D: false })
+    hideScale($hire)
+    TweenMax.to($hire, 0.3, {autoAlpha: 1, scale: 1, z: 20})
+  }
+}
 
+function hideScale(element){
+  TweenMax.set(element, {autoAlpha:0, scale: 3})
+}
+
+function removeHire(){
+  const $hire = $('#hire');
+  if ($hire.hasClass("animated")){
+    $hire.removeClass("animated")
+    hideScale($hire)
+  }
 }

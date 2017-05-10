@@ -1,17 +1,23 @@
-mixin panel(titel, text)
-  .panel-project(id!=attributes.id)
-    .cover-project
-      
-      
-    .info-project  
-      h3= titel
-      p= text
-
 #section-projects.section
   .panel-holder
-    +panel('sprungbraett-festival.ch', 'The Sprungbraett Website is one of my ongoing sideprojects. The website is based on Joomla for which i developed a theme through sass and some javascript parts.')(id="panel1")
-    +panel('refallschwil.ch', 'The website is build on Wordpress with the goal to implement the room-/person-database of the church. Mostly Css edits on a existing theme and implementing different plugins.')(id="panel2")
-    +panel('different Projects', 'Beside of CMS (short for Content Managements Systems) I got some prototyping website based on React or created one with mostly Gsap which is one of the leading Animation libraries.')(id="panel3")
+    .panel-project#panel1
+      .cover-project
+      .info-project  
+        h3 sprungbraett-festival.ch
+        p.t005 The Sprungbraett Website is one of my ongoing sideprojects. The website is based on Joomla for which i developed a theme through sass and some javascript parts.
+    
+    .panel-project#panel2
+      .cover-project
+      .info-project  
+        h3 refallschwil.ch
+        p.t006 The website is build on Wordpress with the goal to implement the room-/person-database of the church. Mostly Css edits on a existing theme and implementing different plugins.
+        
+    .panel-project#panel3
+      .cover-project
+      .info-project  
+        h3 different Projects
+        p.t007 Beside of CMS (short for Content Management System) I got some prototyping website based on React or created one with mostly Gsap which is one of the leading Animation libraries.
+    
   
-  h1.huge-titel Projects
+  h1.huge-titel.t008 Projects
     

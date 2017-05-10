@@ -1,5 +1,15 @@
 {
-  "t004": "//Webentwickler",
-  "t005": "//Webdesigner",
-  "t006": "//Webanimator"
+  "m001": "Start",
+  "m002": "Projekte",
+  "m003": "Kontakt",
+  "t002": "//Webentwickler",
+  "t003": "//Webdesigner",
+  "t004": "//Webanimator",
+  "t005": "Die Sprungbraett-Festival Webseite ist eines meiner anhaltender Projecten. Sie basiert auf Joomla für welches ich ein eigenes Template mit Hilfe von Sass und Javascript entwickelt habe. ",
+  "t006": "Die Webseite läuft auf Wordpress und wurde mit dem Ziel entwickelt die Raum- und Personendatenbank der Kirche mit der Seite zu verbinden. Ich habe dabei hauptsächlich mit CSS Veränderungen gearbeitet und verschiedene Plugins eingebaut.",
+  "t007": "Neben dem Arbeiten mit unterschiedlichen Cms(kurz: Content Management System) habe ich auch verschiedene Prototypen Webseiten programmiert. Unter anderem eine Website auf React oder eine andere welche hauptsächlich Gsap verwändet. ",
+  "t008": "Projekte",
+  "t009": "Kontakt",
+  "t010": "Wenn ich Dein Interesse geweckt habe, du eine Idee für eine Webseite hast oder auch falls du nur hi sagen willst, kontaktiere mich doch per Mail.",
+  "t011": "Engagiere mich"
 }

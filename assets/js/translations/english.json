@@ -1,5 +1,15 @@
 {
-    "t004": "//Webdeveloper",
-    "t005": "//Webdesigner",
-    "t006": "//Webanimator"
+  "m001": "Start",
+  "m002": "Projects",
+  "m003": "Contact",
+  "t001": "//Webdeveloper",
+  "t002": "//Webdesigner",
+  "t003": "//Webanimator",
+  "t005": "The Sprungbraett Website is one of my ongoing sideprojects. The website is based on Joomla for which i developed a theme through sass and some javascript parts.",
+  "t006": "The website is build on Wordpress with the goal to implement the room-/person-database of the church. Mostly Css edits on a existing theme and implementing different plugins.",
+  "t007": "Beside of CMS (short for Content Management System) I got some prototyping website based on React or created one with mostly Gsap which is one of the leading Animation libraries.",
+  "t008": "Projects",
+  "t009": "Contact",
+  "t010": "If I sparked your interest, you got a idea for a website or just want to say hi, contact me on social media or via my email.",
+  "t011": "Hire Me"
 }
