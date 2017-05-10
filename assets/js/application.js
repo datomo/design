@@ -81,13 +81,18 @@ function translateText (data ){
   $.each(data, function(key, val) {
     let temp = $("." + key)
     temp.text(val)
-    let mySplitText = new SplitText(temp, {type:"lines"})
-    let lines = mySplitText.lines;
+    let mySplitText = new SplitText(temp, {type:"chars"})
+    let lines = mySplitText.chars;
 
     let tl = new TimelineLite
-    tl.set(lines, {transformOrigin: "left center", autoAlpha:0})
+    //tl.set(lines, {transformOrigin: "left center"})
 
-    tl.staggerTo(lines, 0.3, {autoAlpha:1}, 0.03, "+0")
+    //$.each(lines, function(){
+      let split = new SplitText(lines, {type: "chars"})
+      tl.set(lines,{autoAlpha:0})
+      tl.staggerTo(lines, 0.01, {autoAlpha:1}, 0.1, "+0")
+    //})
+    //tl.to(lines, 0.3, {autoAlpha:1, scaleX:1}, 0.03, "+0")
 
 
   })
