@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Tw from './vendor/TweenMax.min.js';
 import TwSplit from './vendor/utils/SplitText.min.js';
+require('script-loader!./vendor/plugins/ScrollToPlugin.min.js');
 
 //require('script-loader!./vendor/plugins/TextPlugin.min.js');
 
@@ -45,19 +46,32 @@ $(document).ready(function(){
     animationHero(windScroll)
   })
   ////////////////////////////////////////////////////////////
-  //Start Project Cover
+  //Start Scroll Animation
   ////////////////////////////////////////////////////////////
-
   /*
-  const $panel = $(".panel-project")
-  $panel.on("mouseover", function(){
-    Tw.to($this.children(".panel-info"), 0.2,{autoAlpha: 1, zIndex: 1})
-  })
+  $('.menu-link').on("click", function(){
+    Tw.to(window, 0.3,{scrollTo: 400})
+  })*/
 
-  $panel.on("mouseleave", function(){
-    Tw.to($this.children(".panel-info"), 0.2,{autoAlpha: 0, zIndex: 0})
-  })
-  */
+  var wrapper = $(".content"),
+    $menu = $(".menu"),
+    $window = $(window);
+
+$menu.on("click","a", function(){
+    var $this = $(this),
+        href = $this.attr("href"),
+        topY = $(href).offset().top;
+
+    TweenMax.to($window, 1, {
+        scrollTo:{
+            y: topY,
+            autoKill: true
+        },
+        ease:Power3.easeOut
+     });
+
+  return false;
+});
 
 
 });

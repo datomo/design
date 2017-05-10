@@ -1,12 +1,15 @@
 mixin menu
-  li  text
-  li  text
+  a#menu-start.menu-link(href="#section-hero")
+    li  Start
+  a#menu-project.menu-link(href="#section-projects")
+    li  Projects
+  a#menu-contact.menu-link(href="#section-social")
+    li  Contact
   button#en-button.is-active En
   button#de-button De
 
 .container
    header.header
       nav.main-nav
-        ul
-          a
-            +menu
+        ul.menu
+          +menu

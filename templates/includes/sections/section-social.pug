@@ -1,0 +1,15 @@
+mixin icon-social()
+  .icon-social
+    a(href!=attributes.href target!=attributes.target)
+      img(id!=attributes.id src!=attributes.src type="image/svg+xml")
+
+#section-social.section
+  .panel-social
+    h1.titel-social Contact
+    .icon-holder
+      +icon-social(id="icon-mail" src="/assets/images/mail-logo.svg" href="mailto:me@davidlengweiler.com?Subject=Website" target="_top")
+      +icon-social(id="icon-code" src="/assets/images/codepen-logo.svg" href="http://codepen.io/Datomo/" target="_blank")
+      +icon-social(id="icon-git" src="/assets/images/github-logo.svg" href="https://github.com/datomo" target="_blank")
+      
+    p If I sparked your interest, you got a idea for a website or just want to say hi, contact me on social media or via my email. 
+    
