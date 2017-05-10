@@ -1,15 +1,17 @@
-mixin panel(id)
+mixin panel(titel, text)
   .panel-project(id!=attributes.id)
     .cover-project
-    
+      
+      
     .info-project  
-      p this is some text
+      h3= titel
+      p= text
 
 #section-projects.section
   .panel-holder
-    +panel(id="panel1") 
-    +panel(id="panel2")
-    +panel(id="panel3")
+    +panel('sprungbraett-festival.ch', 'The Sprungbraett Website is one of my ongoing sideprojects. The website is based on Joomla for which i developed a theme through sass and some javascript parts.')(id="panel1")
+    +panel('refallschwil.ch', 'The website is build on Wordpress with the goal to implement the room-/person-database of the church. Mostly Css edits on a existing theme and implementing different plugins.')(id="panel2")
+    +panel('different Projects', 'Beside of CMS (short for Content Managements Systems) I got some prototyping website based on React or created one with mostly Gsap which is one of the leading Animation libraries.')(id="panel3")
   
   h1.huge-titel Projects
     

@@ -60,7 +60,7 @@ $(document).ready(function(){
 $menu.on("click","a", function(){
     var $this = $(this),
         href = $this.attr("href"),
-        topY = $(href).offset().top;
+        topY = $(href).offset().top - $menu.height();
 
     TweenMax.to($window, 1, {
         scrollTo:{
@@ -111,32 +111,32 @@ function switchClass(div1, div2, class1, class2){
 
 
 function adaptMenu(windScroll){
-  let scroll = windScroll.scrollTop() -  $(".section-hero").height()
-  const menu = $('.main-nav')
+  let scroll = windScroll.scrollTop() -  $("#section-hero").height()
+  let menuSc = $('.main-nav')
   const isFixed = $('.is-fixed')
   const isStatic = $('.is-static')
 
-  if (scroll < (0 - menu.height())) {
+  if (scroll < (0 - menuSc.height())) {
 
-    if(menu.hasClass("is-fixed")) {
+    if(menuSc.hasClass("is-fixed")) {
       //menu.removeClass("is-fixed")
       let tl = new TimelineLite
-      tl.to(menu, 0.3,{top:-100})
-      tl.set(menu,{className:"-=is-fixed"})
-      tl.set(menu,{top:0})
+      tl.to(menuSc, 0.3,{top:-100})
+      tl.set(menuSc,{className:"-=is-fixed"})
+      tl.set(menuSc,{top:0})
     }else {
 
     }
 
   } else {
-    if(menu.hasClass("is-fixed")) {
+    if(menuSc.hasClass("is-fixed")) {
 
     }else{
       //menu.addClass('is-fixed')
       let tl = new TimelineLite
-      tl.set($("header"),{height: menu.height()})
-      tl.set(menu,{className:"+=is-fixed"})
-      tl.fromTo(menu, 0.3,{top:-100},{top:0})
+      tl.set($("header"),{height: menuSc.height()})
+      tl.set(menuSc,{className:"+=is-fixed"})
+      tl.fromTo(menuSc, 0.3,{top:-100},{top:0})
     }
   }
 

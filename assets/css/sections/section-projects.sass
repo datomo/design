@@ -6,6 +6,27 @@
     position: relative
     text-align: center
 
+    #panel1
+      .cover-project
+        background:
+          image: url("/assets/images/sprungbraett.jpg")
+          size: cover
+          position: center center
+
+    #panel2
+      .cover-project
+        background:
+          image: url("/assets/images/refallschwil.jpg")
+          size: cover
+          position: center center
+
+    #panel3
+      .cover-project
+        background:
+          image: url("/assets/images/dLeng.jpg")
+          size: cover
+          position: center center
+
     .panel-project
       position: relative
       overflow: hidden
@@ -14,20 +35,27 @@
       margin: 40px 70px
       height: 350px
       width: 400px
-      background-color: #d2d2d2
+      //background-color: #d2d2d2
       box-shadow: 0px 80px 110px -40px rgba(86, 119, 119, 0.68), 0px 5px 20px rgba(0, 0, 0, 0.1)
 
       .cover-project
         background-color: #d2d2d2
         color: white
         text-align: left
+        display: block
+        position: relative
+        z-index: 1
+        height: 100%
+
 
       .info-project
-        position: relative
+        position: absolute
         display: block
-        z-index: 1
+        top: 0
+        z-index: 2
         padding: 20px 10px
-        background-color: rgba(255, 255, 255, 0.33)
+        background-color: rgba(35, 35, 35, 0.81)
+        color: white
         visibility: hidden
         height: 100%
         transform: translateY(400px)
@@ -35,10 +63,6 @@
 
 
 
-      &:hover
-        .info-project
-          visibility: visible
-          transform: translateY(0px)
 
   h1.huge-titel
     position: relative
@@ -48,3 +72,9 @@
     z-index: -1
     color: red
     margin: 0
+
+  .panel-project
+    &:hover
+      .info-project
+        visibility: visible
+        transform: translateY(0px)
