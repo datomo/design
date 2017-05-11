@@ -7,9 +7,10 @@ require('script-loader!./vendor/plugins/ScrollToPlugin.min.js');
 
 $(document).ready(function(){
   console.log("test");
-  typewriter()
-  placeHire()
+  typewriter();
+  placeHire();
   animateHire()
+  debug()
 
 
   ////////////////////////////////////////////////////////////
@@ -93,10 +94,19 @@ function translateText (data ){
 
     //$.each(lines, function(){
       let split = new SplitText(lines, {type: "chars"})
+      let duration = 2/lines.length
+      //console.log(duration)
       tl.set(lines,{autoAlpha:0})
-      tl.staggerTo(lines, 0.01, {autoAlpha:1}, 0.1, "+0")
-    //})
-    //tl.to(lines, 0.3, {autoAlpha:1, scaleX:1}, 0.03, "+0")
+      tl.staggerTo(lines, 0.01, {autoAlpha:1}, duration, "+0")
+
+      /* some swich animations
+      const $switch = $(".switch")
+      $switch.on("click", function(){
+        let tl = new TimelineLite
+        tl.to($this, 0.2,{css:{background: none}})
+
+      })
+      */
 
 
   })
@@ -160,15 +170,13 @@ function rotate(name, rotation){
 
 function animationHero(windScroll) {
     let scroll = windScroll.scrollTop()
-    const $secSocial = $('#section-social')
+    const $secSocial= $('#section-hero')
     const secSocial = ($(".main-nav").height() + $("#section-hero").height() + $("#section-projects").height() )
-    console.log(scroll)
-    console.log(secSocial + " hire")
     if (scroll == 0){
       typewriter()
     }else if (scroll >= (secSocial)) {
       animateHire()
-      console.log("hire")
+      //console.log("hire")
     }else if (scroll < secSocial) {
       removeHire()
     }
@@ -226,4 +234,14 @@ function removeHire(){
     $hire.removeClass("animated")
     hideScale($hire)
   }
+}
+
+function debug(){
+  const $secHero= $('#section-hero')
+  const $secProjects = $('#section-projects')
+  const $secSocial = $('#section-social')
+
+  console.log($secHero.height())
+  console.log($secProjects.height())
+  console.log($secSocial.height())
 }
