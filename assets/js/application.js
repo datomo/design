@@ -8,7 +8,6 @@ require('script-loader!./vendor/plugins/ScrollToPlugin.min.js');
 $(document).ready(function(){
   console.log("test");
   typewriter();
-  placeHire();
   animateHire()
   debug()
 
@@ -51,7 +50,7 @@ $(document).ready(function(){
 
 
   $(window).resize(function() {
-    placeHire()
+    //was placing $hire here
   })
 
   ////////////////////////////////////////////////////////////
@@ -62,21 +61,32 @@ $(document).ready(function(){
     $menu = $(".menu"),
     $window = $(window);
 
-$menu.on("click","a", function(){
-    var $this = $(this),
-        href = $this.attr("href"),
-        topY = $(href).offset().top - $menu.height();
+  $menu.on("click","a", function(){
+      var $this = $(this),
+          href = $this.attr("href"),
+          topY = $(href).offset().top - $menu.height();
 
-    TweenMax.to($window, 1, {
-        scrollTo:{
-            y: topY,
-            autoKill: true
-        },
-        ease:Power3.easeOut
-     });
+      TweenMax.to($window, 1, {
+          scrollTo:{
+              y: topY,
+              autoKill: true
+          },
+          ease:Power3.easeOut
+       });
 
-  return false;
-});
+    return false;
+  });
+
+  /* some swich animations*/
+  const $switch = $(".switch")
+  $switch.on("click", function(){
+    let tl = new TimelineMax({})
+    const $this = $(this)
+    const $nthis = $(this).siblings().not(this)
+    tl.to($nthis, 0.01,{ background: "none"})
+    tl.to($this, 0.01,{ backgroundColor: "#000"})
+
+  })
 
 
 });
@@ -99,14 +109,6 @@ function translateText (data ){
       tl.set(lines,{autoAlpha:0})
       tl.staggerTo(lines, 0.01, {autoAlpha:1}, duration, "+0")
 
-      /* some swich animations
-      const $switch = $(".switch")
-      $switch.on("click", function(){
-        let tl = new TimelineLite
-        tl.to($this, 0.2,{css:{background: none}})
-
-      })
-      */
 
 
   })
@@ -202,25 +204,18 @@ function typewriter(){
 }
 
 
-function placeHire() {
-  const $hire = $('#hire');
-  const $panel = $('.panel-social');
-  let leftPanel = (($panel.position().left + $panel.width()) - ($(window).width()/20))
-  let topPanel = ($panel.position().top - ($hire.height()/2) - ($(window).height()/20))
-  TweenMax.set($hire,{x: leftPanel, y: topPanel});
-  TweenMax.set($hire,{rotation:-45})
-}
 
 function animateHire(){
   const $hire = $('#hire');
   const $panel = $('.panel-social');
+  const $secSocial = $('#section-social')
   if ($hire.hasClass("animated")){
 
   } else {
     $hire.addClass("animated")
-    TweenMax.set($hire, {force3D: false })
+    TweenMax.set($hire, {force3D: false, transformPerspective:500})
     hideScale($hire)
-    TweenMax.to($hire, 0.3, {autoAlpha: 1, scale: 1, z: 20})
+    TweenMax.to($hire, 0.3, {autoAlpha: 1, z: 0, scale: 1})
   }
 }
 
