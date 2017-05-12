@@ -106,8 +106,9 @@ function translateText (data ){
       let split = new SplitText(lines, {type: "chars"})
       let duration = 2/lines.length
       //console.log(duration)
-      tl.set(lines,{autoAlpha:0})
-      tl.staggerTo(lines, 0.01, {autoAlpha:1}, duration, "+0")
+
+      tl.set(lines,{width: "0", display: "none"})
+      tl.staggerTo(lines, 0.001, {width: "1ch", display:"inline-block", ease:  SteppedEase.config(37)}, duration, "+0")
 
 
 
@@ -213,9 +214,11 @@ function animateHire(){
 
   } else {
     $hire.addClass("animated")
-    TweenMax.set($hire, {force3D: false, transformPerspective:500})
-    hideScale($hire)
-    TweenMax.to($hire, 0.3, {autoAlpha: 1, z: 0, scale: 1})
+    //hideScale($hire)
+    const middleX = $panel.width()/2
+    const middleY = $panel.height()/2
+    
+    TweenMax.from($hire, 0.3, {left: "0%", bottom: "0%", xPercent: "-50", yPercent: "50", scale: 0})
   }
 }
 
@@ -227,7 +230,7 @@ function removeHire(){
   const $hire = $('#hire');
   if ($hire.hasClass("animated")){
     $hire.removeClass("animated")
-    hideScale($hire)
+    //hideScale($hire)
   }
 }
 

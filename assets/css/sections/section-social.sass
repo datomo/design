@@ -2,8 +2,9 @@
   position: relative
   max-width: 960px
   margin: 0 auto
-  margin-top: 100px
-  margin-bottom: 100px
+  margin-top: 50px
+  padding-top: 50px
+  margin-bottom: 50px
 
   min-height: 80vh
 
@@ -14,7 +15,7 @@
     text-align: center
     padding: 50px
     padding-bottom: 100px
-    margin-bottom: 100px
+    margin-top: 100px
     min-height: 400px
     text-align: left
     box-shadow: 0px 80px 110px -40px rgba(86, 119, 119, 0.68), 0px 5px 20px rgba(0, 0, 0, 0.1)
@@ -51,19 +52,26 @@
   #hire
     position: absolute
     text-align: center
-    bottom: 0
+    top: 0
     right: 0
     display: inline-block
     z-index: 1
     padding: 0
     margin: 0
-    transform: translateX(50%)
+    //transform-origin: top center
+    transform: translateX(50%) translateY(-50%)
     //visibility: hidden
+    border-top: 15px solid #9C27B0
+    border-right: 2px solid #9C27B0
+    border-bottom: 2px solid #9C27B0
+    border-left: 2px solid #9C27B0
+
+    box-shadow: 0px 80px 110px -40px rgba(86, 119, 119, 0.68), 0px 5px 20px rgba(0, 0, 0, 0.1)
 
     h3
       padding: 0
       margin: 0
-      padding-bottom: 50px
-      padding-right: 50px
       font-size: 5em
-      transform: rotate(-45deg)
+      background-color: #ececec
+      padding: 20px
+      color: black
