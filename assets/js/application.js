@@ -217,8 +217,8 @@ function animateHire(){
     //hideScale($hire)
     const middleX = $panel.width()/2
     const middleY = $panel.height()/2
-    
-    TweenMax.from($hire, 0.3, {left: "0%", bottom: "0%", xPercent: "-50", yPercent: "50", scale: 0})
+
+    TweenMax.from($hire, 0.3, { scale: 0})
   }
 }
 

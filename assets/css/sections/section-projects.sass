@@ -84,8 +84,17 @@
     margin: 0
     margin-top: 50px
 
+    @media(max-width: 660px)
+      font-size: 20vw
+
   .panel-project
     &:hover
       .info-project
         visibility: visible
         transform: translateY(0px)
+
+    @media(pointer: coarse)
+      &:active
+        .info-project
+          visibility: visible
+          transform: translateY(0px)
